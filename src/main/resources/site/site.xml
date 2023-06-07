@@ -1,0 +1,16 @@
+<!-- Delete this file if you are building a web app -->
+
+<site>
+    <x-data name="test-message"
+            allowContentTypes="animal"/>
+    <form/>
+
+    <mappings>
+        <mapping controller="/mappings/api.js">
+            <pattern>/api</pattern>
+        </mapping>
+        <mapping controller="/mappings/api.js">
+            <match>type:'com.example.myproject:artist'</match>
+        </mapping>
+    </mappings>
+</site>

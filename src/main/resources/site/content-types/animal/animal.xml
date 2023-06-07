@@ -1,0 +1,116 @@
+<content-type>
+    <display-name>Species</display-name>
+    <display-name-label>Species</display-name-label>
+    <display-name-expression>${name}</display-name-expression>
+    <description>Choose species</description>
+    <super-type>base:structured</super-type>
+    <form>
+        <input name="name" type="TextLine">
+            <label>Name</label>
+            <help-text>
+                The species common name.
+            </help-text>
+        </input>
+        <input type="TextLine" name="otherNames">
+            <label>Other names</label>
+            <help-text>The different names for the selected species.</help-text>
+            <occurrences minimum="0" maximum="0"/>
+        </input>
+        <input name="description" type="HtmlArea">
+            <label>Description</label>
+            <help-text>
+                Describe the animal. Where its habitats are, what it eats,
+                etc.
+            </help-text>
+            <config>
+                <exclude>*</exclude>
+                <include>
+                    Bold Italic Underline |
+                    JustifyBlock JustifyLeft JustifyCenter
+                    JustifyRight | HorizontalRule
+                    Blockquote | Format Link Macro Image
+                </include>
+            </config>
+        </input>
+        <input name="animalImage" type="ImageSelector">
+            <label>Images</label>
+            <occurrences minimum="0" maximum="3"/>
+            <config>
+                <allowPath>${site}/animals/animal-images</allowPath>
+                <hideToggleIcon>true</hideToggleIcon>
+            </config>
+        </input>
+        <input name="favoriteArtist" type="ContentSelector">
+            <label>Favorite artist</label>
+            <occurrences minimum="0" maximum="1"/>
+            <config>
+                <allowContentType>artist</allowContentType>
+            </config>
+        </input>
+        <option-set name="feedingBehavior">
+            <label>Feeding behavior</label>
+            <options minimum="1" maximum="1">
+                <option name="herbivore">
+                    <label>Herbivore</label>
+                </option>
+                <option name="carnivore">
+                    <label>Carnivore</label>
+                    <items>
+                        <input name="prey" type="TextLine">
+                            <label>Prey</label>
+                            <occurrences minimum="0" maximum="0"/>
+                        </input>
+                    </items>
+                </option>
+            </options>
+        </option-set>
+        <option-set name="distribution">
+            <label>Distribution across continents</label>
+            <help-text>Continents where the animal can be found in the wild</help-text>
+            <options minimum="0" maximum="0">
+                <option name="africa">
+                    <label>Africa</label>
+                    <items>
+                        <mixin name="distributionData"/>
+                    </items>
+                </option>
+                <option name="asia">
+                    <label>Asia</label>
+                    <items>
+                        <mixin name="distributionData"/>
+                    </items>
+                </option>
+                <option name="australia">
+                    <label>Australia</label>
+                    <items>
+                        <mixin name="distributionData"/>
+                    </items>
+                </option>
+                <option name="europe">
+                    <label>Europe</label>
+                    <items>
+                        <mixin name="distributionData"/>
+                    </items>
+                </option>
+                <option name="northAmerica">
+                    <label>North-America</label>
+                    <items>
+                        <mixin name="distributionData"/>
+                    </items>
+                </option>
+                <option name="middleAmerica">
+                    <label>Middle-America</label>
+                    <items>
+                        <mixin name="distributionData"/>
+                    </items>
+                </option>
+                <option name="southAmerica">
+                    <label>South-America</label>
+                    <items>
+                        <mixin name="distributionData"/>
+                    </items>
+                </option>
+            </options>
+        </option-set>
+    </form>
+</content-type>

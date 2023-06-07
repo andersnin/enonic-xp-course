@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content-type
+        xmlns="urn:enonic:xp:model:1.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:enonic:xp:model:1.0 https://raw.githubusercontent.com/enonic/xp/master/modules/core/core-api/src/main/resources/META-INF/xsd/model.xsd">
+    <display-name>Artist</display-name>
+    <description>Information about an artist</description>
+    <super-type>base:structured</super-type>
+    <form>
+        <input name="name" type="TextLine">
+            <label>Name</label>
+            <help-text>
+                The artist's name (if different from their professional moniker).
+            </help-text>
+        </input>
+        <input type="TextArea" name="about">
+            <label>About the artist</label>
+            <help-text>Write some info about the artist.</help-text>
+        </input>
+        <input type="TextLine" name="textlineList">
+            <label>Labels</label>
+            <help-text>Name what labels the artist is signed to.</help-text>
+            <occurrences minimum="0" maximum="0"/>
+        </input>
+        <input name="artistImage" type="ImageSelector">
+            <label>Artist images</label>
+            <occurrences minimum="0" maximum="1"/>
+            <config>
+                <allowPath>${site}/artists/artist-images</allowPath>
+                <hideToggleIcon>true</hideToggleIcon>
+            </config>
+        </input>
+        <input name="favoriteAnimal" type="ContentSelector">
+            <label>Favorite animal</label>
+            <occurrences minimum="0" maximum="1"/>
+            <config>
+                <allowContentType>animal</allowContentType>
+            </config>
+        </input>
+        <item-set name="contact_info">
+            <label>Contact info</label>
+            <occurrences minimum="0" maximum="0"/>
+            <items>
+                <input name="label" type="TextLine">
+                    <label>Label</label>
+                </input>
+            </items>
+        </item-set>
+        <option-set name="catalog">
+            <label>Catalog Work</label>
+            <help-text>Albums and movies the artist has participated in.</help-text>
+            <options minimum="0" maximum="0">
+                <option name="albums">
+                    <label>Discography</label>
+                    <items>
+                        <item-set name="albumEntries">
+                            <label>Album</label>
+                            <occurrences minimum="0" maximum="0"/>
+                            <items>
+                                <mixin name="catalogData"/>
+                            </items>
+                        </item-set>
+                    </items>
+                </option>
+                <option name="movies">
+                    <label>Filmography</label>
+                    <items>
+                        <item-set name="movieEntries">
+                            <label>Movie</label>
+                            <help-text>
+                                Movies the artist has participated in.
+                            </help-text>
+                            <occurrences minimum="0" maximum="0"/>
+                            <items>
+                                <mixin name="catalogData"/>
+                            </items>
+                        </item-set>
+                    </items>
+                </option>
+            </options>
+        </option-set>
+    </form>
+</content-type>

@@ -1,0 +1,12 @@
+<mixin>
+    <display-name>Catalog data</display-name>
+    <form>
+        <input name="title" type="TextLine">
+            <label>Title</label>
+            <occurrences minimum="1" maximum="1"/>
+        </input>
+        <input type="TextLine" name="releaseYear">
+            <label>Release year</label>
+        </input>
+    </form>
+</mixin>

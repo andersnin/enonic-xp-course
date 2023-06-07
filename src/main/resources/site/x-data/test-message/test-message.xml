@@ -1,0 +1,8 @@
+<x-data>
+    <display-name>Editors notes</display-name>
+    <form>
+        <input type="TextArea" name="notes">
+            <label>Notes</label>
+        </input>
+    </form>
+</x-data>
